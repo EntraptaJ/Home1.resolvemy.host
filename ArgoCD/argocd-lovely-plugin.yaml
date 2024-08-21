@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-lovely-plugin
+spec:
+  template:
+    spec:
+      containers:
+        - name: lovely-plugin
+          image: ghcr.io/crumbhole/lovely-vault-plugin:1.0.0
+
+          envFrom:
+            - secretRef:
+                name: argocd-vault-config
+
+          env:
+            - name: PLUGIN_NAME
+              value: argocd-lovely-plugin
+
+            - name: ARGOCD_EXEC_TIMEOUT
+              value: 900s
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 999
+
+          resources:
+            limits:
+              cpu: '8'
+              memory: 16Gi
+            requests:
+              cpu: '1'
+              memory: 16Gi
+
+
+          volumeMounts:
+            # Import the repo-server's plugin binary
+            - name: var-files
+              mountPath: /var/run/argocd
+              
+            - name: plugins
+              mountPath: /home/argocd/cmp-server/plugins
+              
+              # Starting with v2.4, do NOT mount the same tmp volume as the repo-server container. The filesystem separation helps
+              # mitigate path traversal attacks.
+
+            - name: lovely-tmp
+              mountPath: /tmp
+              
+      volumes:
+        # A temporary directory for the tool to work in.
+        - name: lovely-tmp
+          emptyDir: {}
