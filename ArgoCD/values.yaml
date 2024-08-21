@@ -43,7 +43,7 @@ argo-cd:
   global:
     # -- Default domain used by all components
     ## Used for ingresses, certificates, SSO, notifications, etc.
-    domain: argocd.writemy.codes
+    domain: argo.writemy.codes
 
     # -- Common labels for the all resources
     additionalLabels: {}
