@@ -18,7 +18,7 @@ spec:
   source:
     repoURL: https://github.com/EntraptaJ/Home1.resolvemy.host.git
     targetRevision: HEAD
-    path: nuc1.resolvemy.host
+    path: nuc1.home1.resolvemy.host
     directory:
       recurse: true
 
