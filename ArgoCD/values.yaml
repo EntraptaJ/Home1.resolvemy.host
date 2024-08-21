@@ -109,7 +109,7 @@ argo-cd:
     # Default network policy rules used by all components
     networkPolicy:
       # -- Create NetworkPolicy objects for all components
-      create: false
+      create: true
       # -- Default deny all ingress traffic
       defaultDenyIngress: false
 
@@ -278,6 +278,9 @@ argo-cd:
       applicationsetcontroller.enable.progressive.syncs: false
 
       applicationsetcontroller.namespaces: '*'
+
+      applicationsetcontroller.allowed.scm.providers: https://github.com/,https://gitlab.git.writemy.codes/
+
 
       # -- Enables [Applications in any namespace]
       ## List of additional namespaces where applications may be created in and reconciled from.
