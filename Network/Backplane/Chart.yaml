@@ -1,0 +1,8 @@
+apiVersion: v2
+version: 1.0.0
+name: home-network-backplane
+
+dependencies:
+  - name: cilium
+    version: '>= 1.16.1'
+    repository: https://helm.cilium.io/
