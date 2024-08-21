@@ -9,10 +9,6 @@ spec:
         - name: lovely-plugin
           image: ghcr.io/crumbhole/lovely-vault-plugin:1.0.0
 
-          envFrom:
-            - secretRef:
-                name: argocd-vault-config
-
           env:
             - name: PLUGIN_NAME
               value: argocd-lovely-plugin
