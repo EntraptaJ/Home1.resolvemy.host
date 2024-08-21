@@ -406,7 +406,10 @@ cilium:
   # CiliumBGPPeeringPolicy CRDs.
   bgpControlPlane:
     # -- Enables the BGP control plane.
-    enabled: false
+    enabled: true
+
+    v2Enabled: true
+
     # -- SecretsNamespace is the namespace which BGP support will retrieve secrets from.
     secretsNamespace:
       # -- Create secrets namespace for BGP secrets.
@@ -514,7 +517,7 @@ cilium:
     # @schema
     # -- (bool) Enable native IP masquerade support in eBPF
     # @default -- `false`
-    masquerade: ~
+    masquerade: true
     # @schema
     # type: [null, boolean]
     # @schema
@@ -633,7 +636,7 @@ cilium:
         cpu: 100m
         memory: 10Mi
     # -- Enable route MTU for pod netns when CNI chaining is used
-    enableRouteMTUForCNIChaining: false
+    enableRouteMTUForCNIChaining: true
   # -- (string) Configure how frequently garbage collection should occur for the datapath
   # connection tracking table.
   # @default -- `"0s"`
@@ -647,9 +650,9 @@ cilium:
   # @default -- `"5m"`
   crdWaitTimeout: ""
   # -- Tail call hooks for custom eBPF programs.
-  customCalls:
-    # -- Enable tail call hooks for custom eBPF programs.
-    enabled: false
+  #customCalls:
+  #  # -- Enable tail call hooks for custom eBPF programs.
+  #  enabled: false
   daemon:
     # -- Configure where Cilium runtime state should be stored.
     runPath: "/var/run/cilium"
@@ -710,7 +713,7 @@ cilium:
   # enableIdentityMark: true
 
   # -- Enable Kubernetes EndpointSlice feature in Cilium if the cluster supports it.
-  # enableK8sEndpointSlice: true
+  enableK8sEndpointSlice: true
 
   # -- Enable CiliumEndpointSlice feature (deprecated, please use `ciliumEndpointSlice.enabled` instead).
   enableCiliumEndpointSlice: false
@@ -840,7 +843,7 @@ cilium:
   gatewayAPI:
     # -- Enable support for Gateway API in cilium
     # This will automatically set enable-envoy-config as well.
-    enabled: true
+    enabled: false
     # -- Enable proxy protocol for all GatewayAPI listeners. Note that _only_ Proxy protocol traffic will be accepted once this is enabled.
     enableProxyProtocol: false
     # -- Enable Backend Protocol selection support (GEP-1911) for Gateway API via appProtocol.
@@ -990,14 +993,14 @@ cilium:
   # -- Configure the host firewall.
   hostFirewall:
     # -- Enables the enforcement of host policies in the eBPF datapath.
-    enabled: false
+    enabled: true
   hostPort:
     # -- Enable hostPort service support.
-    enabled: false
+    enabled: true
   # -- Configure socket LB
   socketLB:
     # -- Enable socket LB
-    enabled: false
+    enabled: true
     # -- Disable socket lb for non-root ns. This is used to enable Istio routing rules.
     # hostNamespaceOnly: false
     # -- Enable terminating pod connections to deleted service backends.
@@ -1827,9 +1830,11 @@ cilium:
   # @schema
   # -- The api-rate-limit option can be used to overwrite individual settings of the default configuration for rate limiting calls to the Cilium Agent API
   apiRateLimit: ~
+
   # -- Configure the eBPF-based ip-masq-agent
   ipMasqAgent:
     enabled: true
+
   # the config of nonMasqueradeCIDRs
     config:
       nonMasqueradeCIDRs: []
@@ -1880,7 +1885,7 @@ cilium:
   # -- Configure the kube-proxy replacement in Cilium BPF datapath
   # Valid options are "true" or "false".
   # ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
-  #kubeProxyReplacement: "false"
+  kubeProxyReplacement: "true"
 
   # -- healthz server bind address for the kube-proxy replacement.
   # To enable set the value to '0.0.0.0:10256' for all ipv4
