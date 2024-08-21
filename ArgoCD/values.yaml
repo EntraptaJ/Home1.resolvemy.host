@@ -43,7 +43,7 @@ argo-cd:
   global:
     # -- Default domain used by all components
     ## Used for ingresses, certificates, SSO, notifications, etc.
-    domain: argocd.example.com
+    domain: argocd.writemy.codes
 
     # -- Common labels for the all resources
     additionalLabels: {}
@@ -67,7 +67,7 @@ argo-cd:
     # Default logging options used by all components
     logging:
       # -- Set the global logging format. Either: `text` or `json`
-      format: text
+      format: json
       # -- Set the global logging level. One of: `debug`, `info`, `warn` or `error`
       level: info
 
@@ -179,7 +179,7 @@ argo-cd:
 
       # -- Enable exec feature in Argo UI
       ## Ref: https://argo-cd.readthedocs.io/en/latest/operator-manual/rbac/#exec-resource
-      exec.enabled: false
+      exec.enabled: true
 
       # -- Enable local admin user
       ## Ref: https://argo-cd.readthedocs.io/en/latest/faq/#how-to-disable-admin-user
@@ -281,7 +281,7 @@ argo-cd:
       ## List of additional namespaces where applications may be created in and reconciled from.
       ## The namespace where Argo CD is installed to will always be allowed.
       ## Set comma-separated list. (e.g. app-team-one, app-team-two)
-      application.namespaces: ""
+      application.namespaces: "*"
 
       # -- JQ Path expression timeout
       ## By default, the evaluation of a JQPathExpression is limited to one second.
