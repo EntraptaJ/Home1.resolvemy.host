@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
 
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: '0'
 
   labels:
     kubernetes.io/metadata.name: cert-manager

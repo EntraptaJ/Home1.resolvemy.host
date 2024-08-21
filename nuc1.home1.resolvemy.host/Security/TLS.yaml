@@ -3,6 +3,10 @@ kind: ApplicationSet
 metadata:
   name: home1-tls
   namespace: cert-manager
+
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+
 spec:
   generators:
     - list:
