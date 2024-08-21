@@ -19,6 +19,9 @@ spec:
     repoURL: https://github.com/EntraptaJ/Home1.resolvemy.host.git
     targetRevision: HEAD
     path: ArgoCD
+    plugin:
+      name: argocd-lovely-plugin
+
 
   destination: 
     server: https://kubernetes.default.svc
