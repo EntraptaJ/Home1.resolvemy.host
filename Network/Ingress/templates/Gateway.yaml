@@ -33,6 +33,11 @@ spec:
             name: writemycodes-default-certificates
             namespace: core-prod
 
+          - group: ''
+            kind: Secret
+            name: myloginspace-default-certificates
+            namespace: core-prod
+
     - name: http
       port: 80
       protocol: HTTP
