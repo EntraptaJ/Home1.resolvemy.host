@@ -20,15 +20,6 @@ spec:
             runAsNonRoot: true
             runAsUser: 999
 
-          resources:
-            limits:
-              cpu: '8'
-              memory: 16Gi
-            requests:
-              cpu: '1'
-              memory: 16Gi
-
-
           volumeMounts:
             # Import the repo-server's plugin binary
             - name: var-files
