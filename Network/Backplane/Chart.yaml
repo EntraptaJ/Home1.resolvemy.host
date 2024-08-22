@@ -6,3 +6,9 @@ dependencies:
   - name: cilium
     version: '>= 1.16.1'
     repository: https://helm.cilium.io/
+
+  - name: gateway-helm
+    alias: envoy-gw
+    condition: envoy-gw.enabled
+    version: v0.0.0-latest
+    repository: oci://registry-1.docker.io/envoyproxy
