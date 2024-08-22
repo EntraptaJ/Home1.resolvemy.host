@@ -319,38 +319,21 @@ cilium:
       # type: [integer, string]
       # @schema
       maxUnavailable: 2
-  # Configuration Values for cilium-agent
-  aksbyocni:
-    # -- Enable AKS BYOCNI integration.
-    # Note that this is incompatible with AKS clusters not created in BYOCNI mode:
-    # use Azure integration (`azure.enabled`) instead.
-    enabled: false
+
   # @schema
   # type: [boolean, string]
   # @schema
   # -- Enable installation of PodCIDR routes between worker
   # nodes if worker nodes share a common L2 network segment.
   autoDirectNodeRoutes: false
+
   # -- Enable skipping of PodCIDR routes between worker
   # nodes if the worker nodes are in a different L2 network segment.
   directRoutingSkipUnreachable: false
+
   # -- Annotate k8s node upon initialization with Cilium's metadata.
   annotateK8sNode: false
-  azure:
-    # -- Enable Azure integration.
-    # Note that this is incompatible with AKS clusters created in BYOCNI mode: use
-    # AKS BYOCNI integration (`aksbyocni.enabled`) instead.
-    enabled: false
-    # usePrimaryAddress: false
-    # resourceGroup: group1
-    # subscriptionID: 00000000-0000-0000-0000-000000000000
-    # tenantID: 00000000-0000-0000-0000-000000000000
-    # clientID: 00000000-0000-0000-0000-000000000000
-    # clientSecret: 00000000-0000-0000-0000-000000000000
-    # userAssignedIdentityID: 00000000-0000-0000-0000-000000000000
-  alibabacloud:
-    # -- Enable AlibabaCloud ENI integration
-    enabled: false
+
   # -- Enable bandwidth manager to optimize TCP and UDP workloads and allow
   # for rate-limiting traffic from individual Pods with EDT (Earliest Departure
   # Time) through the "kubernetes.io/egress-bandwidth" Pod annotation.
@@ -359,16 +342,19 @@ cilium:
     enabled: false
     # -- Activate BBR TCP congestion control for Pods
     bbr: false
+
   # -- Configure standalone NAT46/NAT64 gateway
   nat46x64Gateway:
     # -- Enable RFC8215-prefixed translation
     enabled: false
+
   # -- EnableHighScaleIPcache enables the special ipcache mode for high scale
   # clusters. The ipcache content will be reduced to the strict minimum and
   # traffic will be encapsulated to carry security identities.
   highScaleIPcache:
     # -- Enable the high scale mode for the ipcache.
     enabled: false
+
   # -- Configure L2 announcements
   l2announcements:
     # -- Enable L2 announcements
@@ -379,12 +365,14 @@ cilium:
     # leaseRenewDeadline: 5s
     # -- The timeout between retries if renewal fails
     # leaseRetryPeriod: 2s
+
   # -- Configure L2 pod announcements
   l2podAnnouncements:
     # -- Enable L2 pod announcements
     enabled: false
     # -- Interface used for sending Gratuitous ARP pod announcements
     interface: "eth0"
+
   # -- Configure BGP
   bgp:
     # -- Enable BGP support inside Cilium; embeds a new ConfigMap for BGP inside
@@ -395,6 +383,7 @@ cilium:
       loadbalancerIP: false
       # -- Enable announcement of node pod CIDR
       podCIDR: false
+
   # -- This feature set enables virtual BGP routers to be created via
   # CiliumBGPPeeringPolicy CRDs.
   bgpControlPlane:
@@ -413,6 +402,7 @@ cilium:
     # -- Enable path MTU discovery to send ICMP fragmentation-needed replies to
     # the client.
     enabled: true
+
   bpf:
     autoMount:
       # -- Enable automatic mount of BPF filesystem
@@ -933,63 +923,33 @@ cilium:
   k8sNetworkPolicy:
     # -- Enable support for K8s NetworkPolicy
     enabled: true
-  eni:
-    # -- Enable Elastic Network Interface (ENI) integration.
-    enabled: false
-    # -- Update ENI Adapter limits from the EC2 API
-    updateEC2AdapterLimitViaAPI: true
-    # -- Release IPs not used from the ENI
-    awsReleaseExcessIPs: false
-    # -- Enable ENI prefix delegation
-    awsEnablePrefixDelegation: false
-    # -- EC2 API endpoint to use
-    ec2APIEndpoint: ""
-    # -- Tags to apply to the newly created ENIs
-    eniTags: {}
-    # -- Interval for garbage collection of unattached ENIs. Set to "0s" to disable.
-    # @default -- `"5m"`
-    gcInterval: ""
-    # -- Additional tags attached to ENIs created by Cilium.
-    # Dangling ENIs with this tag will be garbage collected
-    # @default -- `{"io.cilium/cilium-managed":"true,"io.cilium/cluster-name":"<auto-detected>"}`
-    gcTags: {}
-    # -- If using IAM role for Service Accounts will not try to
-    # inject identity values from cilium-aws kubernetes secret.
-    # Adds annotation to service account if managed by Helm.
-    # See https://github.com/aws/amazon-eks-pod-identity-webhook
-    iamRole: ""
-    # -- Filter via subnet IDs which will dictate which subnets are going to be used to create new ENIs
-    # Important note: This requires that each instance has an ENI with a matching subnet attached
-    # when Cilium is deployed. If you only want to control subnets for ENIs attached by Cilium,
-    # use the CNI configuration file settings (cni.customConf) instead.
-    subnetIDsFilter: []
-    # -- Filter via tags (k=v) which will dictate which subnets are going to be used to create new ENIs
-    # Important note: This requires that each instance has an ENI with a matching subnet attached
-    # when Cilium is deployed. If you only want to control subnets for ENIs attached by Cilium,
-    # use the CNI configuration file settings (cni.customConf) instead.
-    subnetTagsFilter: []
-    # -- Filter via AWS EC2 Instance tags (k=v) which will dictate which AWS EC2 Instances
-    # are going to be used to create new ENIs
-    instanceTagsFilter: []
+  
   externalIPs:
     # -- Enable ExternalIPs service support.
     enabled: true
+  
   # fragmentTracking enables IPv4 fragment tracking support in the datapath.
-  # fragmentTracking: true
+  fragmentTracking: true
+
   gke:
     # -- Enable Google Kubernetes Engine integration
     enabled: false
+
   # -- Enable connectivity health checking.
   healthChecking: true
+
   # -- TCP port for the agent health API. This is not the port for cilium-health.
   healthPort: 9879
+
   # -- Configure the host firewall.
   hostFirewall:
     # -- Enables the enforcement of host policies in the eBPF datapath.
     enabled: true
+
   hostPort:
     # -- Enable hostPort service support.
     enabled: true
+
   # -- Configure socket LB
   socketLB:
     # -- Enable socket LB
@@ -1003,16 +963,6 @@ cilium:
   # for the Kubernetes CronJob which will be scheduled regularly to
   # (re)generate any certificates not provided manually.
   certgen:
-    image:
-      # @schema
-      # type: [null, string]
-      # @schema
-      override: ~
-      repository: "quay.io/cilium/certgen"
-      tag: "v0.2.0"
-      digest: "sha256:169d93fd8f2f9009db3b9d5ccd37c2b753d0989e1e7cd8fe79f9160c459eef4f"
-      useDigest: true
-      pullPolicy: "IfNotPresent"
     # -- Seconds after which the completed job pod will be deleted
     ttlSecondsAfterFinished: 1800
     # -- Labels to be added to hubble-certgen pods
@@ -1303,18 +1253,7 @@ cilium:
       enabled: false
       # -- Roll out Hubble Relay pods automatically when configmap is updated.
       rollOutPods: false
-      # -- Hubble-relay container image.
-      image:
-        # @schema
-        # type: [null, string]
-        # @schema
-        override: ~
-        repository: "quay.io/cilium/hubble-relay"
-        tag: "v1.16.1"
-        # hubble-relay-digest
-        digest: "sha256:2e1b4c739a676ae187d4c2bfc45c3e865bda2567cc0320a90cb666657fcfcc35"
-        useDigest: true
-        pullPolicy: "IfNotPresent"
+
       # -- Specifies the resources for the hubble-relay pods
       resources: {}
       # -- Number of replicas run for the hubble-relay deployment.
@@ -1552,17 +1491,7 @@ cilium:
           # Use existingSecret instead.
           key: ""
       backend:
-        # -- Hubble-ui backend image.
-        image:
-          # @schema
-          # type: [null, string]
-          # @schema
-          override: ~
-          repository: "quay.io/cilium/hubble-ui-backend"
-          tag: "v0.13.1"
-          digest: "sha256:0e0eed917653441fded4e7cdb096b7be6a3bddded5a2dd10812a27b1fc6ed95b"
-          useDigest: true
-          pullPolicy: "IfNotPresent"
+
         # -- Hubble-ui backend security context.
         securityContext: {}
         # -- Additional hubble-ui backend environment variables.
@@ -1586,17 +1515,6 @@ cilium:
         #     cpu: 100m
         #     memory: 64Mi
       frontend:
-        # -- Hubble-ui frontend image.
-        image:
-          # @schema
-          # type: [null, string]
-          # @schema
-          override: ~
-          repository: "quay.io/cilium/hubble-ui"
-          tag: "v0.13.1"
-          digest: "sha256:e2e9313eb7caf64b0061d9da0efbdad59c6c461f6ca1752768942bfeda0796c6"
-          useDigest: true
-          pullPolicy: "IfNotPresent"
         # -- Hubble-ui frontend security context.
         securityContext: {}
         # -- Additional hubble-ui frontend environment variables.
@@ -2137,6 +2055,7 @@ cilium:
     namespace: ~
     labelValue: "1"
     annotations: {}
+
   # Configure Cilium Envoy options.
   envoy:
     # @schema
@@ -2168,17 +2087,7 @@ cilium:
     xffNumTrustedHopsL7PolicyIngress: 0
     # -- Number of trusted hops regarding the x-forwarded-for and related HTTP headers for the egress L7 policy enforcement Envoy listeners.
     xffNumTrustedHopsL7PolicyEgress: 0
-    # -- Envoy container image.
-    image:
-      # @schema
-      # type: [null, string]
-      # @schema
-      override: ~
-      repository: "quay.io/cilium/cilium-envoy"
-      tag: "v1.29.7-39a2a56bbd5b3a591f69dbca51d3e30ef97e0e51"
-      pullPolicy: "IfNotPresent"
-      digest: "sha256:bd5ff8c66716080028f414ec1cb4f7dc66f40d2fb5a009fff187f4a9b90b566b"
-      useDigest: true
+
     # -- Additional containers added to the cilium Envoy DaemonSet.
     extraContainers: []
     # -- Additional envoy container arguments.
