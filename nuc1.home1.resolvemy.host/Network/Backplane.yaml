@@ -32,7 +32,7 @@ spec:
           jsonPointers:
             - /spec/conversion/webhook/clientConfig/caBundle
 
-        - group: '''
+        - group: ''
           kind: ConfigMap
           name: hubble-ca-cert
           jsonPointers:
