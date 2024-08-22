@@ -14,9 +14,9 @@ spec:
             spoke: 'true'
             dnsLBIP: 10.1.1.60
             helmName: consul
-            name: infra1-dc1
+            name: nuc1-home1
             main: 'false'
-            replicas: '5'
+            replicas: '3'
 
   syncPolicy:
     preserveResourcesOnDeletion: true
