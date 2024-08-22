@@ -1,0 +1,123 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: main-gw
+
+  labels:
+    wan-mode: 'public'
+    lan-mode: 'private'
+
+spec:
+  gatewayClassName: eg
+
+  infrastructure:
+    annotations:
+      metallb.universe.tf/address-pool: pub-pool
+      metallb.universe.tf/allow-shared-ip: main-gw
+      purelb.io/allow-shared-ip: main-gw.resolvemy.host
+      purelb.io/service-group: main-public
+      purelb.io/allow-local: 'true'
+
+  listeners:
+    - name: https
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ''
+            kind: Secret
+            name: writemycodes-default-certificates
+            namespace: core-prod
+
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+
+    #
+    # DNS
+    #
+    - name: dns-tcp
+      port: 53
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: dns-udp
+      port: 53
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    #
+    # Palworld 
+    #
+    - name: palworld
+      port: 8211
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    #
+    # Minecraft
+    #
+    - name: minecraftjava
+      port: 25565
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+
+    - name: minecraftbedrocktcp
+      port: 19132
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+
+    - name: minecraftbedrockudp
+      port: 19132
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: dhcp
+      port: 67
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: tftp
+      port: 69
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: tls-dns
+      port: 853
+      protocol: TCP
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: tls-dnsudp
+      port: 853
+      protocol: UDP
+      allowedRoutes:
+        namespaces:
+          from: All
