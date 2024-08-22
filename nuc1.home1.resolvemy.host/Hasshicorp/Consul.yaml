@@ -16,7 +16,7 @@ spec:
             helmName: consul
             name: nuc1-home1
             main: 'false'
-            replicas: '1'
+            replicas: '3'
 
   syncPolicy:
     preserveResourcesOnDeletion: true
