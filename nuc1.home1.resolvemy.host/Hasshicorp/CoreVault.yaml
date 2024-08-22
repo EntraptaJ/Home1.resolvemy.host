@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: core-backplane-corevault
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: nuc1-home1
+            url: https://kubernetes.default.svc
+
+  template:
+    metadata:
+      name: '{{cluster}}-corevault'
+
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
+
+    spec:
+      project: core
+
+
+      source:
+        path: Hashicorp/CoreVault
+        repoURL: https://github.com/K-FOSS/CoRE-Backplane.git
+        targetRevision: HEAD
+        plugin:
+          name: argocd-lovely-plugin
+
+      destination:
+        server: '{{url}}'
+        namespace: core-prod
