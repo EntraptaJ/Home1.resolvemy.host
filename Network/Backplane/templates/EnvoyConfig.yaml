@@ -17,7 +17,10 @@ spec:
   provider:
     type: Kubernetes
     kubernetes:
-      envoyDeployment:
-        replicas: 1
+      envoyDaemonSet:
+        name: main-gw
+
+      useListenerPortAsContainerPort: true
+
       envoyService:
         externalTrafficPolicy: Local
