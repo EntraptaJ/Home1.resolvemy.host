@@ -1,0 +1,49 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPAdvertisement
+metadata:
+  name: home-main
+  namespace: kube-system
+
+  labels:
+    advertise: bgp
+spec:
+  advertisements:
+    - advertisementType: PodCIDR
+    - advertisementType: Service
+      service:
+        addresses:
+          - LoadBalancerIP
+          - ClusterIP
+          - ExternalIP
+
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPPeerConfig
+metadata:
+  name: default
+  namespace: kube-system
+spec:
+  transport:
+    peerPort: 179
+  families:
+    - afi: ipv4
+      safi: unicast
+      advertisements:
+        matchLabels:
+          advertise: "bgp"
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPClusterConfig
+metadata:
+  name: cilium-bgp-cluster
+  namespace: kube-system
+spec:
+  bgpInstances:
+    - name: main
+      localASN: 64567
+      peers:
+        - name: home1-sbc
+          peerAddress: 192.168.4.10
+          peerASN: 64567
+          peerConfigRef:
+            name: default
