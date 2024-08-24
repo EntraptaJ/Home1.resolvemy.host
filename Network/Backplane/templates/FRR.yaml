@@ -12,10 +12,10 @@ spec:
         prefixes:
           - 10.0.0.0/8
         neighbors:
-          - address: 172.31.241.253
+          - address: 192.168.4.71
             asn: 64567
             port: 180
-            sourceaddress: 172.31.241.253
+            sourceaddress: 192.168.4.71
             toReceive:
               allowed:
                 mode: all
