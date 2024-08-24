@@ -48,7 +48,7 @@ spec:
       localPort: 5555
       peers:
         - name: frr
-          localAddress: 127.0.0.1
+          localAddress: 192.168.4.71
 
 ---
 apiVersion: cilium.io/v2alpha1
@@ -62,7 +62,7 @@ spec:
       localASN: 64567
       peers:
         - name: frr
-          peerAddress: 172.31.241.253
+          peerAddress: 127.0.0.1
           peerASN: 64567
           peerConfigRef:
             name: default
