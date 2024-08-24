@@ -47,12 +47,6 @@ spec:
     - name: main
       localASN: 64567
       peers:
-        - name: home1-sbc
-          peerAddress: 172.31.241.249
-          peerASN: 64567
-          peerConfigRef:
-            name: default
-
         - name: frr
           peerAddress: 127.0.0.1
           peerASN: 64567
