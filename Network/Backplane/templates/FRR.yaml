@@ -5,15 +5,6 @@ metadata:
 
   namespace: kube-system
 spec:
-  raw:
-    priority: 5
-    rawConfig: |-
-      router bgp 64567
-        neighbor cilium peer-group
-        neighbor cilium remote-as internal
-        bgp listen range 172.31.241.253/32 peer-group cilium
-        bgp listen range 192.168.4.71/32 peer-group cilium
-        bgp listen range 10.0.0.0/8 peer-group cilium
   bgp:
     routers:
       - asn: 64567
@@ -21,17 +12,19 @@ spec:
         prefixes:
           - 10.0.0.0/8
         neighbors:
-          - address: 127.0.0.1
+          #
+          # Cilium WIP
+          # 
+          - address: 192.168.4.71
             asn: 64567
-            sourceaddress: 127.0.0.1
             port: 5555
-            toAdvertise:
+            toReceive:
               allowed:
                 mode: all
 
           - address: 172.31.241.249
             asn: 64567
-            sourceaddress: 172.31.241.253
+            sourceaddress: 192.168.4.71
             port: 179
             toAdvertise:
               allowed:
