@@ -51,3 +51,16 @@ spec:
           peerASN: 64567
           peerConfigRef:
             name: default
+
+
+        - name: frr-eth
+          peerAddress: 192.168.4.71
+          peerASN: 64567
+          peerConfigRef:
+            name: default
+
+        - name: tun
+          peerAddress: 172.31.241.253
+          peerASN: 64567
+          peerConfigRef:
+            name: default
