@@ -20,19 +20,8 @@ spec:
         id: 192.168.4.71
         prefixes:
           - 10.0.0.0/24
+          - 10.43.0.0/24
         neighbors:
-          - address: 10.0.0.66
-            asn: 64567
-            toReceive:
-              allowed:
-                mode: all
-   
-          - address: 127.0.0.1
-            asn: 64567
-            toReceive:
-              allowed:
-                mode: all
-
           - address: 172.31.241.249
             asn: 64567
             sourceaddress: 172.31.241.253
