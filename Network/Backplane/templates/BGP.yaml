@@ -28,7 +28,6 @@ metadata:
 spec:
   transport:
     peerPort: 179
-    localPort: 5555
   families:
     - afi: ipv4
       safi: unicast
