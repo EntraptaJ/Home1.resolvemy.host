@@ -13,7 +13,6 @@ spec:
         neighbor cilium remote-as internal
         bgp listen range 172.31.241.253/32 peer-group cilium
         bgp listen range 192.168.4.71/32 peer-group cilium
-        bgp listen range 127.0.0.0/8 peer-group cilium
         bgp listen range 10.0.0.0/8 peer-group cilium
   bgp:
     routers:
@@ -22,6 +21,14 @@ spec:
         prefixes:
           - 10.0.0.0/8
         neighbors:
+          - address: 127.0.0.1
+            asn: 64567
+            sourceaddress: 127.0.0.1
+            port: 5555
+            toAdvertise:
+              allowed:
+                mode: all
+
           - address: 172.31.241.249
             asn: 64567
             sourceaddress: 172.31.241.253
