@@ -67,7 +67,7 @@ spec:
           peerConfigRef:
             name: default
 
-        - name: frr
+        - name: frr2
           peerAddress: 192.168.4.71
           peerASN: 64567
           peerConfigRef:

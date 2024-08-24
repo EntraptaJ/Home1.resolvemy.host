@@ -22,6 +22,13 @@ spec:
               allowed:
                 mode: all
 
+          - address: 127.0.0.1
+            asn: 64567
+            port: 5555
+            toReceive:
+              allowed:
+                mode: all
+
           - address: 172.31.241.249
             asn: 64567
             sourceaddress: 192.168.4.71
