@@ -24,7 +24,7 @@ spec:
           - address: 127.0.0.1
             asn: 64567
             sourceaddress: 172.31.241.253
-            port: 179
+            port: 5555
             toAdvertise:
               allowed:
                 mode: all
