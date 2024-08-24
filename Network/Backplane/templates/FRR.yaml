@@ -26,6 +26,10 @@ spec:
             asn: 64567
             sourceaddress: 192.168.4.71
             port: 179
+            toReceive:
+              allowed:
+                mode: all
+
             toAdvertise:
               allowed:
                 mode: all
