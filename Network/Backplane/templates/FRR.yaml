@@ -21,10 +21,6 @@ spec:
         prefixes:
           - 10.0.0.0/24
         neighbors:
-          - address: 127.0.0.1
-            asn: 64567
-            port: 5555
-
           - address: 172.31.241.249
             asn: 64567
             sourceaddress: 172.31.241.253
