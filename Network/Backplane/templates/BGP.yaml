@@ -67,6 +67,12 @@ spec:
           peerConfigRef:
             name: default
 
+        - name: frr
+          peerAddress: 192.168.4.71
+          peerASN: 64567
+          peerConfigRef:
+            name: default
+
         - name: sbc1.home1.resolvemy.host
           peerAddress: 192.168.4.10
           peerASN: 64567
