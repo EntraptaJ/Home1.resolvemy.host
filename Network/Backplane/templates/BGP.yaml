@@ -26,8 +26,6 @@ metadata:
   name: default
   namespace: kube-system
 spec:
-  transport:
-    peerPort: 179
   families:
     - afi: ipv4
       safi: unicast
@@ -61,20 +59,7 @@ spec:
     - name: main
       localASN: 64567
       peers:
-        - name: frr-test
-          peerAddress: 127.0.0.1
-          peerASN: 64567
-          peerConfigRef:
-            name: default
-
-
         - name: frr
-          peerAddress: 172.31.241.253
-          peerASN: 64567
-          peerConfigRef:
-            name: default
-
-        - name: frr2
           peerAddress: 192.168.4.71
           peerASN: 64567
           peerConfigRef:
