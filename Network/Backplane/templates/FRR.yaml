@@ -14,6 +14,8 @@ spec:
         bgp listen range 127.0.0.0/24 peer-group cilium
         bgp listen range 172.31.241.253/32 peer-group cilium
         bgp listen range 192.168.4.71/32 peer-group cilium
+        address-family ipv4 unicast
+          neighbor 127.0.0.1 soft-reconfiguration  inbound
   bgp:
     routers:
       - asn: 64567
