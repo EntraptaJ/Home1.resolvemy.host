@@ -763,7 +763,7 @@ cilium:
   # disableIptablesFeederRules: ""
 
   # -- Limit iptables-based egress masquerading to interface selector.
-  egressMasqueradeInterfaces: "enp0s25"
+  egressMasqueradeInterfaces: ""
 
   # -- Enable setting identity mark for local traffic.
   # enableIdentityMark: true
