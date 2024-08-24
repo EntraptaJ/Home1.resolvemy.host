@@ -28,7 +28,7 @@ metadata:
 spec:
   transport:
     peerPort: 179
-    localPort: 180
+    localPort: 5555
   families:
     - afi: ipv4
       safi: unicast
@@ -48,7 +48,7 @@ spec:
       localASN: 64567
       peers:
         - name: frr
-          peerAddress: 192.168.4.71
+          peerAddress: 127.0.0.1
           peerASN: 64567
           peerConfigRef:
             name: default
