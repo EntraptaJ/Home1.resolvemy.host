@@ -9,7 +9,8 @@ spec:
     routers:
       - asn: 64567
         id: 192.168.4.71
-
+        prefixes:
+          - 10.0.0.0/24
         neighbors:
           - address: 192.168.4.71
             asn: 64567
