@@ -20,7 +20,7 @@ spec:
       envoyDaemonSet:
         name: main-gw
 
-      useListenerPortAsContainerPort: true
+      #useListenerPortAsContainerPort: true
 
       envoyService:
         externalTrafficPolicy: Local
