@@ -567,7 +567,7 @@ cilium:
     # first time in a connection.
     monitorFlags: "all"
     # -- Allow cluster external access to ClusterIP services.
-    lbExternalClusterIP: false
+    lbExternalClusterIP: true
     # @schema
     # type: [null, boolean]
     # @schema
