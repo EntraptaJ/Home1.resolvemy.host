@@ -52,6 +52,13 @@ spec:
           - /data/tls.crt
           - /data/tls.key
 
+        - group: ''
+          kind: Secret
+          name: cilium-ca
+          jsonPointers:
+          - /data/ca.crt
+          - /data/tls.crt
+          - /data/tls.key
 
       syncPolicy:
         automated: {}
