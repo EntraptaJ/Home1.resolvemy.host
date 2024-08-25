@@ -23,8 +23,6 @@ spec:
     spec:
       project: core
       syncPolicy:
-        automated: {}
-
         syncOptions:
           - ServerSideApply=true
 
