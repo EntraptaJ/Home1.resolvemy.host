@@ -2669,7 +2669,8 @@ cilium:
       kubernetes.io/os: linux
 
     # -- Annotations to be added to all top-level nodeinit objects (resources under templates/cilium-nodeinit)
-    annotations: {}
+    annotations:
+      argocd.argoproj.io/sync-options: ServerSideApply=false
     # -- Annotations to be added to node-init pods.
     podAnnotations: {}
     # -- Labels to be added to node-init pods.
@@ -3521,7 +3522,8 @@ frr-k8s:
     affinity: {}
     ## Selects which runtime class will be used by the pod.
     runtimeClassName: ""
-    podAnnotations: {}
+    podAnnotations:
+      argocd.argoproj.io/sync-options: ServerSideApply=false
     labels:
       app: frr-k8s
     healthPort: 8081
@@ -3583,7 +3585,8 @@ external-dns:
   commonLabels: {}
   ## @param commonAnnotations Annotations to add to all deployed objects
   ##
-  commonAnnotations: {}
+  commonAnnotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=false
   ##
   ## @param extraDeploy Array of extra objects to deploy with the release (evaluated as a template).
   ##
