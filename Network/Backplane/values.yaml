@@ -294,7 +294,8 @@ cilium:
   #    test 3
 
   # -- Annotations to be added to agent pods
-  podAnnotations: {}
+  podAnnotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=false
   # -- Labels to be added to agent pods
   podLabels: {}
   # -- Agent resource limits & requests
@@ -2530,7 +2531,8 @@ cilium:
     # -- Additional cilium-operator volumeMounts.
     extraVolumeMounts: []
     # -- Annotations to be added to all top-level cilium-operator objects (resources under templates/cilium-operator)
-    annotations: {}
+    annotations:
+      argocd.argoproj.io/sync-options: ServerSideApply=false
     # -- HostNetwork setting
     hostNetwork: true
     # -- Security context to be added to cilium-operator pods
