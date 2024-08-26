@@ -17,3 +17,8 @@ dependencies:
     condition: frr-k8s.enabled
     version: 0.0.14
     repository: https://metallb.github.io/frr-k8s
+
+  - name: external-dns
+    condition: external-dns.enabled
+    version: '>= 8.3.5'
+    repository: https://charts.bitnami.com/bitnami
