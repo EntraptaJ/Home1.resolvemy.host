@@ -33,7 +33,7 @@ spec:
                 vault:
                   server:
                     ha:
-                      replicas: 1
+                      replicas: 0
 
       destination:
         server: '{{url}}'
