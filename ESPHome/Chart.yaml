@@ -1,0 +1,8 @@
+apiVersion: v2
+version: 1.0.0
+name: home-argo
+
+dependencies:
+  - name: esphome 
+    version: '1.0.19'
+    repository: https://charts.egeback.se
