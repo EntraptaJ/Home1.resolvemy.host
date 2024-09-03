@@ -1,4 +1,7 @@
 esphome:
+  defaultPodOptions:
+    hostNetwork: true
+
   #
   # IMPORTANT NOTE
   #
