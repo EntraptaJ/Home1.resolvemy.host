@@ -23,4 +23,4 @@ spec:
       #useListenerPortAsContainerPort: true
 
       envoyService:
-        externalTrafficPolicy: Local
+        type: ClusterIP
