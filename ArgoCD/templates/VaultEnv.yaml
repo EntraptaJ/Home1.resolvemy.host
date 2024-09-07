@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+type: Opaque
+
+metadata:
+  name: avp-env
+
+stringData:
+  AVP_TYPE: kubernetessecret

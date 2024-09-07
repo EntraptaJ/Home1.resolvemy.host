@@ -195,6 +195,10 @@ argo-cd:
       ## Ref: https://argo-cd.readthedocs.io/en/stable/user-guide/status-badge/
       statusbadge.enabled: false
 
+      resource.customizations.ignoreResourceUpdates.external-secrets.io_ExternalSecret: |
+        jsonPointers:
+        - /status/refreshTime
+
       resource.exclusions: |
         - apiGroups:
             - cilium.io

@@ -7,8 +7,10 @@ spec:
     spec:
       containers:
         - name: lovely-plugin
-          image: ghcr.io/crumbhole/lovely:1.0.0
-
+          image: ghcr.io/crumbhole/lovely-vault-plugin:1.1.0
+          envFrom:
+            - secretRef:
+                name: avp-env
           env:
             - name: PLUGIN_NAME
               value: argocd-lovely-plugin
