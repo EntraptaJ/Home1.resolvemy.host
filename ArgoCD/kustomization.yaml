@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: argocd
 
 patches:
-  - path: argocd-lovely-plugin.yaml
+  - path: ./argocd-lovely-plugin.yaml
     target:
       kind: Deployment
       name: argocd-repo-server
