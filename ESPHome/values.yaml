@@ -57,6 +57,11 @@ esphome:
   persistence:
     config:
       enabled: true
+
+      type: persistentVolumeClaim
       mountPath: /config
 
       accessMode: ReadWriteOnce
+
+      size: 1Gi
+
