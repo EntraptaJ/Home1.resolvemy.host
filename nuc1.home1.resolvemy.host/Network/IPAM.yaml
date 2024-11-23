@@ -34,6 +34,9 @@ spec:
         path: Network/IPAM
         repoURL: https://github.com/K-FOSS/CoRE-Backplane.git
         targetRevision: HEAD
+        plugin:
+          name: argocd-lovely-plugin
+
 
       destination:
         server: '{{url}}'
